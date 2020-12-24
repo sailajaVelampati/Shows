@@ -27,18 +27,17 @@ React JS
 
 ### React
 
-After working with other frameworks such as React.js , I've chosen VueJS because it's a framework that leads you to improve the structure of your code, it has a community that makes it better every day and because of the flexibility it has when changing the theme of the project.
+React help in building single page application using matile reuseable components compatable with all major browsers,
 
 Below I show you the packages I developed the application with:
 
-- Vue cli (v4.5.0)
-- HTTP client: Axios
+- React (v17.0.1)
+- HTTP client: Fetch
 - Unit testing: Jest
-- Routes management: VueRouter
-- Store management: Vuex
-- Components design: Vuetify
-- Preprocessor: Sass (dart-sass)
+- Routes management: react-router-dom
+- Components design: react-dom
 - Code formatters: ES-Linter
+- CSS framework: Material UI
 
 ## Project setup
 

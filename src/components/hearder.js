@@ -5,25 +5,20 @@ import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
-import HomeStyle from "./pages/HomeStyle";
-import fetchData from "./components/API";
+import HomeStyle from "../pages/HomeStyle";
 import { useHistory } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
-import Layout from "./components/hearder";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import Home from "./pages/Home";
-import Details from "./pages/Details";
-import Notfound from "./pages/NotFound";
-
 const useStyles = makeStyles((theme) => HomeStyle(theme, fade));
-function App() {
+
+const Layout = (props) => {
   const classes = useStyles();
   const history = useHistory();
   return (
-    <div className="App">
-      {/* <AppBar position="static" className={classes.AppBar}>
+    <>
+      <AppBar position="static" className={classes.AppBar}>
         <Toolbar onClick={() => history.push(`/`)} data-testid="toolBar">
           <Typography
             className={classes.title}
@@ -34,24 +29,10 @@ function App() {
             SHOWS
           </Typography>
         </Toolbar>
-      </AppBar> */}
-      <Router>
-        <Layout>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/details/:id">
-              <Details />
-            </Route>
-            <Route path="*">
-              <Notfound />
-            </Route>
-          </Switch>
-        </Layout>
-      </Router>
-    </div>
+      </AppBar>
+      <div className="content">{props.children}</div>
+    </>
   );
-}
+};
 
-export default App;
+export default Layout;
