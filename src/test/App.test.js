@@ -2,7 +2,7 @@ import React from "react";
 import { render, act, fireEvent } from "@testing-library/react";
 import App from "../App";
 import ReactDOM from "react-dom";
-import fullListMock from "../components/API.mock";
+import showsListMock from "./testConstants/showsList.mock";
 import { Route, MemoryRouter } from "react-router-dom";
 
 const mockHistoryPush = jest.fn();
@@ -32,7 +32,7 @@ describe("Application ", () => {
   test("renders App", async () => {
     //test App is loaded
     jest.spyOn(global, "fetch").mockResolvedValue({
-      json: jest.fn().mockResolvedValue(fullListMock),
+      json: jest.fn().mockResolvedValue(showsListMock),
     });
     await act(async () => {
       render(<App />, container);
@@ -43,7 +43,7 @@ describe("Application ", () => {
   test("Should navigate to Home when clicked on tool bar", async () => {
     //test App is loaded
     jest.spyOn(global, "fetch").mockResolvedValue({
-      json: jest.fn().mockResolvedValue(fullListMock),
+      json: jest.fn().mockResolvedValue(showsListMock),
     });
     await act(async () => {
       render(

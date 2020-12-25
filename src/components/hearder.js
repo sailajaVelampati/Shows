@@ -23,7 +23,7 @@ const Layout = (props) => {
     getOptionProps,
     groupedOptions,
   } = useAutocomplete({
-    id: "use-autocomplete-demo",
+    id: "global-search",
     options: top100Films,
     getOptionLabel: (option) => option.title,
     onChange: (event, value) => {
@@ -66,18 +66,6 @@ const Layout = (props) => {
               </ul>
             ) : null}
           </div>
-          {/* <div>
-            <div {...getRootProps()}>
-              <input className={classes.input} {...getInputProps()} />
-            </div>
-            {groupedOptions.length > 0 ? (
-              <ul className={classes.listbox} {...getListboxProps()}>
-                {groupedOptions.map((option, index) => (
-                  <li {...getOptionProps({ option, index })}>{option.title}</li>
-                ))}
-              </ul>
-            ) : null}
-          </div> */}
         </Toolbar>
       </AppBar>
       <div className="content">{props.children}</div>

@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import HomeStyle from "./HomeStyle";
 import fetchData from "../components/API";
 import { useHistory } from "react-router-dom";
-import TextField from "@material-ui/core/TextField";
 import {
   MultiElementCarousel,
   FullWidthCarousel,
 } from "../components/carousel";
-import Autocomplete from "@material-ui/lab/Autocomplete";
 import Skeleton from "@material-ui/lab/Skeleton";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
@@ -68,28 +64,6 @@ export default function Home() {
   };
   return (
     <div className={classes.root}>
-      {/* <AppBar position="static" className={classes.SearchBar}>
-        <Toolbar>
-          <Autocomplete
-            style={{ color: "#F8F9F9" }}
-            fullWidth={true}
-            disableClearable
-            options={searchFieldData || []}
-            getOptionLabel={(option) => option.title}
-            onChange={(event, selectedValue) => {
-              navigateTo(selectedValue);
-            }}
-            renderInput={(params) => (
-              <TextField
-                style={{ color: "#F8F9F9" }}
-                {...params}
-                label="Search by Shows name"
-                InputProps={{ ...params.InputProps, type: "search" }}
-              />
-            )}
-          />
-        </Toolbar>
-      </AppBar> */}
       {shows ? (
         <div>
           <FullWidthCarousel

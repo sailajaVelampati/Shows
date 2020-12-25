@@ -1,4 +1,4 @@
-const fullListMock = [
+const showsListMock = [
   {
     id: 169,
     url: "http://www.tvmaze.com/shows/169/breaking-bad",
@@ -899,4 +899,4 @@ const fullListMock = [
   },
 ];
 
-export default fullListMock;
+export default showsListMock;

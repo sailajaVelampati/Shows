@@ -2,7 +2,7 @@ import React from "react";
 import { render, act } from "@testing-library/react";
 import Details from "../pages/Details";
 import ReactDOM from "react-dom";
-import dump from "../pages/dump";
+import showDetails from "./testConstants/showsDetails.mock";
 import { Route, MemoryRouter } from "react-router-dom";
 describe("Details Page ", () => {
   let container = null;
@@ -22,7 +22,7 @@ describe("Details Page ", () => {
   test("renders Details page on page navigation", async () => {
     //test Details is loaded
     jest.spyOn(global, "fetch").mockResolvedValue({
-      json: jest.fn().mockResolvedValue(dump),
+      json: jest.fn().mockResolvedValue(showDetails),
     });
     await act(async () => {
       render(

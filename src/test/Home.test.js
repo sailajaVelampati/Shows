@@ -2,7 +2,7 @@ import React from "react";
 import { render, act, getByTestId } from "@testing-library/react";
 import Home from "../pages/Home";
 import ReactDOM from "react-dom";
-import fullListMock from "../components/API.mock";
+import showsListMock from "./testConstants/showsList.mock";
 describe("Home ", () => {
   let container = null;
   beforeEach(() => {
@@ -51,7 +51,7 @@ describe("Home ", () => {
   test("renders Home with data", async () => {
     //test App is loaded
     jest.spyOn(global, "fetch").mockResolvedValue({
-      json: jest.fn().mockResolvedValue(fullListMock),
+      json: jest.fn().mockResolvedValue(showsListMock),
     });
     await act(async () => {
       render(<Home />, container);

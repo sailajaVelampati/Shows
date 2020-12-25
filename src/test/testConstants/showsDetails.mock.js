@@ -1,4 +1,4 @@
-const dump = {
+const showDetails = {
   id: 43,
   url: "http://www.tvmaze.com/shows/43/outlander",
   name: "Outlander",
@@ -1495,4 +1495,4 @@ const dump = {
   },
 };
 
-export default dump;
+export default showDetails;
