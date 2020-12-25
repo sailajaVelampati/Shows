@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import SearchIcon from "@material-ui/icons/Search";
 import HomeStyle from "./HomeStyle";
 import fetchData from "../components/API";
 import { useHistory } from "react-router-dom";
@@ -14,7 +12,9 @@ import {
   FullWidthCarousel,
 } from "../components/carousel";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import fullListMock from "../components/API.mock";
+import Skeleton from "@material-ui/lab/Skeleton";
+import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles((theme) => HomeStyle(theme, fade));
 
 export default function Home() {
@@ -28,10 +28,11 @@ export default function Home() {
   }, []);
 
   const pageData = (result) => {
-    //result = fullListMock;
-    autoCompleteData(result);
-    result = groupByGener(result);
-    setShows(sortByRating(result));
+    if (result) {
+      autoCompleteData(result);
+      result = groupByGener(result);
+      setShows(sortByRating(result));
+    }
   };
   const groupByGener = (result) => {
     // grouping by genres
@@ -89,7 +90,7 @@ export default function Home() {
           />
         </Toolbar>
       </AppBar>
-      {shows && (
+      {shows ? (
         <div>
           <FullWidthCarousel
             data-testid="fullCarousel"
@@ -100,19 +101,40 @@ export default function Home() {
             className={classes.FullWidthCarousel}
           />
         </div>
+      ) : (
+        <div className={classes.root}>
+          <Skeleton />
+          <Skeleton animation={false} />
+          <Skeleton animation="wave" />
+        </div>
       )}
-      {shows &&
-        shows.map((item, i) => {
-          return (
-            <div key={i}>
-              <Typography variant="subtitle1">{item.genre} Features</Typography>
-              <MultiElementCarousel
-                data={item.entries}
-                navigateTo={navigateTo}
-              />
-            </div>
-          );
-        })}
+      {shows
+        ? shows.map((item, i) => {
+            return (
+              <div key={i}>
+                <Typography variant="subtitle1">
+                  {item.genre} Features
+                </Typography>
+                <MultiElementCarousel
+                  data={item.entries}
+                  navigateTo={navigateTo}
+                />
+              </div>
+            );
+          })
+        : Array.from(new Array(3)).map((i, index) => (
+            <Grid key={index} container wrap="nowrap">
+              {Array.from(new Array(6)).map((item, index1) => (
+                <Box key={index1} width={210} marginRight={0.5} my={5}>
+                  <Skeleton variant="rect" width={210} height={118} />
+                  <Box pt={0.5}>
+                    <Skeleton />
+                    <Skeleton width="60%" />
+                  </Box>
+                </Box>
+              ))}
+            </Grid>
+          ))}
     </div>
   );
 }

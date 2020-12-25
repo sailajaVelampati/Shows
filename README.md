@@ -12,6 +12,8 @@ A simple Tv Shows Application dis[lays shows of all generes and user can search 
 React JS
 ```
 
+### pre-reqisites
+
 ### Main Stack
 
 ```
@@ -19,10 +21,10 @@ React JS
 - CSS
 - ECMAScript 6 (ES6)
 -Javascript
--Jest
--Material UI
--react-multi-carousel
--react-router-dom
+- Jest
+- Material UI
+- react-multi-carousel
+- react-router-dom
 ```
 
 ### React
@@ -66,5 +68,11 @@ npm run lint
 ### Unit test
 
 ```
-npm run test:unit
+npm test
+```
+
+### Full Coverage
+
+```
+npm test -- --coverage --watchAll
 ```

@@ -5,6 +5,7 @@ const MultiElementCarousel = (props) => {
   const { data, navigateTo } = props;
   return (
     <Carousel
+      data-testid="multiCarousel"
       additionalTransfrom={0}
       arrows
       autoPlaySpeed={3000}
@@ -114,10 +115,10 @@ const FullWidthCarousel = (props) => {
       swipeable
     >
       {data
-        .filter(
-          (thing, index, self) =>
-            index === self.findIndex((t) => t.id === thing.id)
-        )
+        // .filter(
+        //   (thing, index, self) =>
+        //     index === self.findIndex((t) => t.id === thing.id)
+        // )
         .map((item, i) => {
           return (
             <div

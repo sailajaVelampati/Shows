@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import HomeStyle from "./HomeStyle";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
+import Skeleton from "@material-ui/lab/Skeleton";
+
 const useStyles = makeStyles((theme) => HomeStyle(theme, fade));
 const Details = () => {
   const { id } = useParams();
@@ -19,62 +21,70 @@ const Details = () => {
   }, []);
 
   return (
-    showDetails && (
-      <div className={classes.root}>
-        <Grid container spacing={3}>
-          <Grid item xs={4}>
-            <img src={showDetails.image.medium} />
+    <div className={classes.root}>
+      {showDetails ? (
+        <div>
+          <Grid container spacing={3}>
+            <Grid item xs={4}>
+              <img src={showDetails.image.medium} />
+            </Grid>
+            <Grid item xs={8}>
+              <Typography variant="h6" noWrap>
+                {showDetails.name}
+              </Typography>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: `${showDetails.summary}`,
+                }}
+              />
+              <Typography variant="body2">
+                Genres: {showDetails.genres.join(",")}
+              </Typography>
+              <Typography variant="body2">
+                Rating: {showDetails.rating.average}
+              </Typography>
+            </Grid>
+            {}
           </Grid>
-          <Grid item xs={8}>
-            <Typography variant="h6" noWrap>
-              {showDetails.name}
-            </Typography>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: `${showDetails.summary}`,
-              }}
-            />
-            <Typography variant="body2">
-              Genres: {showDetails.genres.join(",")}
-            </Typography>
-            <Typography variant="body2">
-              Rating: {showDetails.rating.average}
-            </Typography>
-          </Grid>
-          {}
-        </Grid>
 
-        {showDetails._embedded.episodes.map((item, i) => {
-          return (
-            <div key={i}>
-              <Paper className={classes.root}>
-                <Grid container spacing={3}>
-                  <Grid item xs={4}>
-                    <img src={item.image.medium} />
+          {showDetails._embedded.episodes.map((item, i) => {
+            return (
+              <div key={i}>
+                <Paper className={classes.root}>
+                  <Grid container spacing={3}>
+                    <Grid item xs={4}>
+                      <img src={item.image.medium} />
+                    </Grid>
+                    <Grid item xs={7}>
+                      <p></p>
+                      <Typography variant="h6">{item.name}</Typography>
+                      <Typography variant="caption" display="block">
+                        {`Season: ${item.season} Episode: ${item.number}`}
+                      </Typography>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: `${item.summary}`,
+                        }}
+                      />
+                      <Typography variant="caption" display="block">
+                        Runtime: {item.runtime}
+                      </Typography>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={7}>
-                    <p></p>
-                    <Typography variant="h6">{item.name}</Typography>
-                    <Typography variant="caption" display="block">
-                      {`Season: ${item.season} Episode: ${item.number}`}
-                    </Typography>
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: `${item.summary}`,
-                      }}
-                    />
-                    <Typography variant="caption" display="block">
-                      Runtime: {item.runtime}
-                    </Typography>
-                  </Grid>
-                </Grid>
-              </Paper>
-              <Divider />
-            </div>
-          );
-        })}
-      </div>
-    )
+                </Paper>
+                <Divider />
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div>
+          <Skeleton variant="text" />
+          <Skeleton variant="circle" width={40} height={40} />
+          <Skeleton variant="rect" height={550} />
+        </div>
+      )}
+    </div>
   );
 };
 
