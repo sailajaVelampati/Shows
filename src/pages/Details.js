@@ -23,7 +23,7 @@ const Details = () => {
   return (
     <div className={classes.root}>
       {showDetails ? (
-        <div>
+        <div style={{ marginTop: "10vh" }}>
           <Grid container spacing={3}>
             <Grid item xs={4}>
               <img src={showDetails.image.medium} />

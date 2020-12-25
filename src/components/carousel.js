@@ -130,7 +130,7 @@ const FullWidthCarousel = (props) => {
                 src={show.entries[0].image.medium}
                 style={{
                   display: "block",
-                  height: "35vh",
+                  height: "45vh",
                   width: "100%",
                 }}
               />

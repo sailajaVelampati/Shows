@@ -32,7 +32,7 @@ const Layout = (props) => {
   });
   return (
     <>
-      <AppBar position="static" className={classes.AppBar}>
+      <AppBar className={classes.AppBar} position="fixed">
         <Toolbar onClick={() => history.push(`/`)} data-testid="toolBar">
           {props.location.pathname !== "/" ? <ArrowBackIosIcon /> : null}
 
