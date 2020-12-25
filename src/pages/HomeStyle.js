@@ -66,6 +66,34 @@ const HomeStyle = (theme, fade) => ({
       },
     },
   },
+  listbox: {
+    width: "100%",
+    margin: 0,
+    padding: 0,
+    zIndex: 1,
+    position: "absolute",
+    listStyle: "none",
+    backgroundColor: "#273746",
+    overflow: "auto",
+    maxHeight: 200,
+    border: "1px solid rgba(0,0,0,.50)",
+    '& li[data-focus="true"]': {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+      color: "white",
+      cursor: "pointer",
+    },
+    "& li:active": {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+      color: "white",
+    },
+    "& li:hover": {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+      color: "white",
+    },
+    "& li": {
+      padding: "10px",
+    },
+  },
 });
 
 export default HomeStyle;

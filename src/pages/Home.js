@@ -68,7 +68,7 @@ export default function Home() {
   };
   return (
     <div className={classes.root}>
-      <AppBar position="static" className={classes.SearchBar}>
+      {/* <AppBar position="static" className={classes.SearchBar}>
         <Toolbar>
           <Autocomplete
             style={{ color: "#F8F9F9" }}
@@ -89,7 +89,7 @@ export default function Home() {
             )}
           />
         </Toolbar>
-      </AppBar>
+      </AppBar> */}
       {shows ? (
         <div>
           <FullWidthCarousel
