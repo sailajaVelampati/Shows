@@ -41,7 +41,7 @@ describe("Home ", () => {
         push: mockHistoryPush,
       }),
     }));
-    console.log(getByTestId("fullCarousel"));
+    // console.log(getByTestId("fullCarousel"));
     console.log(document.querySelector("[data-testid=fullCarousel]"));
     // await act(async () => {
     //   fireEvent.click(document.querySelector("[data-testid=show-169]"));
