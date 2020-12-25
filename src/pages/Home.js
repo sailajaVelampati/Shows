@@ -13,53 +13,55 @@ import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 const useStyles = makeStyles((theme) => HomeStyle(theme, fade));
 
-export default function Home() {
+export default function Home(props) {
   const classes = useStyles();
   const history = useHistory();
-  const [shows, setShows] = useState(null);
-  const [searchFieldData, setSearchFieldData] = useState(null);
-  useEffect(() => {
-    fetchData("http://api.tvmaze.com/shows", pageData);
-    // eslint-disable-next-line
-  }, []);
+  const { shows } = props;
+  // const [shows, setShows] = useState(null);
+  // const [searchFieldData, setSearchFieldData] = useState(null);
+  // useEffect(() => {
+  //   fetchData("http://api.tvmaze.com/shows", pageData);
+  //   // eslint-disable-next-line
+  // }, []);
 
-  const pageData = (result) => {
-    if (result) {
-      autoCompleteData(result);
-      result = groupByGener(result);
-      setShows(sortByRating(result));
-    }
-  };
-  const groupByGener = (result) => {
-    // grouping by genres
-    return result.reduce(function (showList, show) {
-      show.genres.map((item) => {
-        showList[item] = showList[item] || [];
-        showList[item].push(show);
-      });
-      return showList;
-    }, {});
-  };
+  // const pageData = (result) => {
+  //   if (result) {
+  //     autoCompleteData(result);
+  //     result = groupByGener(result);
+  //     setShows(sortByRating(result));
+  //   }
+  // };
+  // const groupByGener = (result) => {
+  //   // grouping by genres
+  //   return result.reduce(function (showList, show) {
+  //     show.genres.map((item) => {
+  //       showList[item] = showList[item] || [];
+  //       showList[item].push(show);
+  //     });
+  //     return showList;
+  //   }, {});
+  // };
 
-  const sortByRating = (result) => {
-    //sort each gener by rating and modify data in a required format
-    const sortedShowsDataSet = [];
-    for (const [key, value] of Object.entries(result)) {
-      value.sort(function (previousElement, nextElement) {
-        return nextElement.rating.average - previousElement.rating.average;
-      });
-      sortedShowsDataSet.push({ genre: key, entries: value });
-    }
-    return sortedShowsDataSet;
-  };
-  const autoCompleteData = (data) => {
-    data = data.reduce((showList, show) => {
-      showList.push({ title: show.name, id: show.id });
-      return showList;
-    }, []);
-    setSearchFieldData(data);
-  };
+  // const sortByRating = (result) => {
+  //   //sort each gener by rating and modify data in a required format
+  //   const sortedShowsDataSet = [];
+  //   for (const [key, value] of Object.entries(result)) {
+  //     value.sort(function (previousElement, nextElement) {
+  //       return nextElement.rating.average - previousElement.rating.average;
+  //     });
+  //     sortedShowsDataSet.push({ genre: key, entries: value });
+  //   }
+  //   return sortedShowsDataSet;
+  // };
+  // const autoCompleteData = (data) => {
+  //   data = data.reduce((showList, show) => {
+  //     showList.push({ title: show.name, id: show.id });
+  //     return showList;
+  //   }, []);
+  //   setSearchFieldData(data);
+  // };
   const navigateTo = (data) => {
+    console.log(history);
     history.push(`/details/${data.id}`);
   };
   return (

@@ -1,5 +1,6 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import ShowCard from "./showCard";
 
 const MultiElementCarousel = (props) => {
   const { data, navigateTo } = props;
@@ -59,7 +60,7 @@ const MultiElementCarousel = (props) => {
             key={index}
             data-testid={`show-${show.id}`}
           >
-            <img src={show.image.medium} style={{ marginBottom: "5vh" }} />
+            <img src={show.image.medium} />
           </div>
         );
       })}
@@ -78,12 +79,10 @@ const FullWidthCarousel = (props) => {
       className=""
       containerClass="container"
       dotListClass=""
-      draggable
       focusOnSelect={false}
       infinite
       itemClass=""
       keyBoardControl
-      minimumTouchDrag={80}
       renderButtonGroupOutside={false}
       renderDotsOutside={false}
       responsive={{
@@ -121,19 +120,8 @@ const FullWidthCarousel = (props) => {
         // )
         .map((show, index) => {
           return (
-            <div
-              onClick={() => navigateTo(show.entries[0])}
-              style={{ marginBottom: "5vh" }}
-              key={index}
-            >
-              <img
-                src={show.entries[0].image.medium}
-                style={{
-                  display: "block",
-                  height: "45vh",
-                  width: "100%",
-                }}
-              />
+            <div onClick={() => navigateTo(show.entries[0])} key={index}>
+              <ShowCard data={show.entries[0]} />
             </div>
           );
         })}
