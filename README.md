@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/sailajaVelampati/Shows.svg?branch=master)](https://travis-ci.org/github/sailajaVelampati/Shows)
+
 # tv-shows-app
 
 ### Project Description
