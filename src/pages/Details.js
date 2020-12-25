@@ -47,27 +47,27 @@ const Details = () => {
             {}
           </Grid>
 
-          {showDetails._embedded.episodes.map((item, i) => {
+          {showDetails._embedded.episodes.map((episode, index) => {
             return (
-              <div key={i}>
+              <div key={index}>
                 <Paper className={classes.root}>
                   <Grid container spacing={3}>
                     <Grid item xs={4}>
-                      <img src={item.image.medium} />
+                      <img src={episode.image.medium} />
                     </Grid>
                     <Grid item xs={7}>
                       <p></p>
-                      <Typography variant="h6">{item.name}</Typography>
+                      <Typography variant="h6">{episode.name}</Typography>
                       <Typography variant="caption" display="block">
-                        {`Season: ${item.season} Episode: ${item.number}`}
+                        {`Season: ${episode.season} Episode: ${episode.number}`}
                       </Typography>
                       <div
                         dangerouslySetInnerHTML={{
-                          __html: `${item.summary}`,
+                          __html: `${episode.summary}`,
                         }}
                       />
                       <Typography variant="caption" display="block">
-                        Runtime: {item.runtime}
+                        Runtime: {episode.runtime}
                       </Typography>
                     </Grid>
                   </Grid>

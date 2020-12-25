@@ -52,14 +52,14 @@ const MultiElementCarousel = (props) => {
       slidesToSlide={1}
       swipeable
     >
-      {data.map((item, i) => {
+      {data.map((show, index) => {
         return (
           <div
-            onClick={() => navigateTo(item)}
-            key={i}
-            data-testid={`show-${item.id}`}
+            onClick={() => navigateTo(show)}
+            key={index}
+            data-testid={`show-${show.id}`}
           >
-            <img src={item.image.medium} style={{ marginBottom: "5vh" }} />
+            <img src={show.image.medium} style={{ marginBottom: "5vh" }} />
           </div>
         );
       })}
@@ -119,15 +119,15 @@ const FullWidthCarousel = (props) => {
         //   (thing, index, self) =>
         //     index === self.findIndex((t) => t.id === thing.id)
         // )
-        .map((item, i) => {
+        .map((show, index) => {
           return (
             <div
-              onClick={() => navigateTo(item.entries[0])}
+              onClick={() => navigateTo(show.entries[0])}
               style={{ marginBottom: "5vh" }}
-              key={i}
+              key={index}
             >
               <img
-                src={item.entries[0].image.medium}
+                src={show.entries[0].image.medium}
                 style={{
                   display: "block",
                   height: "35vh",

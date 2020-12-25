@@ -36,12 +36,12 @@ export default function Home() {
   };
   const groupByGener = (result) => {
     // grouping by genres
-    return result.reduce(function (r, a) {
-      a.genres.map((item) => {
-        r[item] = r[item] || [];
-        r[item].push(a);
+    return result.reduce(function (showList, show) {
+      show.genres.map((item) => {
+        showList[item] = showList[item] || [];
+        showList[item].push(show);
       });
-      return r;
+      return showList;
     }, {});
   };
 
@@ -49,17 +49,17 @@ export default function Home() {
     //sort each gener by rating and modify data in a required format
     const sortedShowsDataSet = [];
     for (const [key, value] of Object.entries(result)) {
-      value.sort(function (a, b) {
-        return b.rating.average - a.rating.average;
+      value.sort(function (previousElement, nextElement) {
+        return nextElement.rating.average - previousElement.rating.average;
       });
       sortedShowsDataSet.push({ genre: key, entries: value });
     }
     return sortedShowsDataSet;
   };
   const autoCompleteData = (data) => {
-    data = data.reduce((r, a) => {
-      r.push({ title: a.name, id: a.id });
-      return r;
+    data = data.reduce((showList, show) => {
+      showList.push({ title: show.name, id: show.id });
+      return showList;
     }, []);
     setSearchFieldData(data);
   };
@@ -76,8 +76,8 @@ export default function Home() {
             disableClearable
             options={searchFieldData || []}
             getOptionLabel={(option) => option.title}
-            onChange={(event, newValue) => {
-              navigateTo(newValue);
+            onChange={(event, selectedValue) => {
+              navigateTo(selectedValue);
             }}
             renderInput={(params) => (
               <TextField
@@ -109,23 +109,23 @@ export default function Home() {
         </div>
       )}
       {shows
-        ? shows.map((item, i) => {
+        ? shows.map((show, index) => {
             return (
-              <div key={i}>
+              <div key={index}>
                 <Typography variant="subtitle1">
-                  {item.genre} Features
+                  {show.genre} Features
                 </Typography>
                 <MultiElementCarousel
-                  data={item.entries}
+                  data={show.entries}
                   navigateTo={navigateTo}
                 />
               </div>
             );
           })
-        : Array.from(new Array(3)).map((i, index) => (
+        : Array.from(new Array(3)).map((item, index) => (
             <Grid key={index} container wrap="nowrap">
-              {Array.from(new Array(6)).map((item, index1) => (
-                <Box key={index1} width={210} marginRight={0.5} my={5}>
+              {Array.from(new Array(6)).map((item, innerIndex) => (
+                <Box key={innerIndex} width={210} marginRight={0.5} my={5}>
                   <Skeleton variant="rect" width={210} height={118} />
                   <Box pt={0.5}>
                     <Skeleton />
