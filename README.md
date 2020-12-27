@@ -16,6 +16,10 @@ React JS
 
 ### pre-reqisites
 
+```
+NodeJs - 14.15.0
+```
+
 ### Main Stack
 
 ```

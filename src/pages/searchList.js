@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import fetchData from "../components/API";
+import { withRouter } from "react-router-dom";
 import { Paper, Grid } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import HomeStyle from "./HomeStyle";
@@ -59,4 +60,4 @@ const SearchShowsList = (props) => {
   );
 };
 
-export default SearchShowsList;
+export default withRouter(SearchShowsList);

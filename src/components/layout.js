@@ -15,9 +15,8 @@ const useStyles = makeStyles((theme) => HomeStyle(theme, fade));
 
 const Layout = (props) => {
   const classes = useStyles();
-  const history = useHistory();
 
-  const { searchFieldData, querySearch, navigateTo } = props;
+  const { searchFieldData, querySearch, navigateTo, history } = props;
   const {
     getRootProps,
     getInputProps,
@@ -29,12 +28,13 @@ const Layout = (props) => {
     options: searchFieldData,
     getOptionLabel: (option) => option.title,
     onChange: (event, value) => {
-      console.log(value.id, history);
-      history.push(`/details/1`);
-      navigateTo(value.id);
+      console.log(value.id, history, event);
+      history.push(`/details/${value.id}`);
+      //navigateTo(value.id);
     },
-    clearOnBlur: false,
+    clearOnBlur: true,
     onClose: (event, reason) => {
+      console.log("onClose");
       if (reason === "blur") {
         querySearch(event.target.value);
       }
@@ -43,16 +43,16 @@ const Layout = (props) => {
   return (
     <>
       <AppBar className={classes.AppBar} position="fixed">
-        <Toolbar onClick={() => history.push(`/`)} data-testid="toolBar">
-          {props.location.pathname !== "/" ? <ArrowBackIosIcon /> : null}
-
+        <Toolbar data-testid="toolBar">
           <Typography
+            onClick={() => history.push(`/`)}
             className={classes.title}
             variant="h6"
             noWrap
             data-testid="AppTitle"
             style={{ verticalAlign: "center" }}
           >
+            {props.location.pathname !== "/" ? <ArrowBackIosIcon /> : null}{" "}
             SHOWS
           </Typography>
           <div className={classes.search} {...getRootProps()}>

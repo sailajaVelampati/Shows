@@ -64,13 +64,13 @@ export default function ShowCard(props) {
               <Typography variant="subtitle1" color="textSecondary">
                 {data.rating.average}
               </Typography>
-              <Typography variant="body1" color="textSecondary">
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: `${data.summary}`,
-                  }}
-                />
-              </Typography>
+              <Typography
+                variant="body1"
+                color="textSecondary"
+                dangerouslySetInnerHTML={{
+                  __html: `${data.summary}`,
+                }}
+              ></Typography>
             </CardContent>
           </Grid>
         </Grid>

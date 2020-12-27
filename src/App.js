@@ -60,7 +60,6 @@ function App() {
     });
   };
   const navigateTo = (id) => {
-    console.log("navigate to called");
     history.push(`/details/${id}`);
   };
   useEffect(() => {
@@ -71,12 +70,13 @@ function App() {
   }, [querySearchList]);
   return (
     <div className="App">
-      <Layout
-        searchFieldData={searchFieldData}
-        querySearch={querySearch}
-        navigateTo={navigateTo}
-      >
-        <Switch>
+      <Switch>
+        <Layout
+          history={history}
+          searchFieldData={searchFieldData}
+          querySearch={querySearch}
+          navigateTo={navigateTo}
+        >
           <Route exact path="/">
             <Home shows={shows} />
           </Route>
@@ -89,8 +89,8 @@ function App() {
           <Route path="*">
             <Notfound />
           </Route>
-        </Switch>
-      </Layout>
+        </Layout>
+      </Switch>
     </div>
   );
 }
