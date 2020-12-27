@@ -21,7 +21,7 @@ const Details = () => {
   }, []);
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} style={{ padding: "0px 24px" }}>
       {showDetails ? (
         <div style={{ marginTop: "10vh" }}>
           <Grid container spacing={3}>
