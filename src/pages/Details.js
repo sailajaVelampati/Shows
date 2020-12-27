@@ -53,7 +53,7 @@ const Details = () => {
                 <Paper className={classes.root}>
                   <Grid container spacing={3}>
                     <Grid item xs={4}>
-                      <img src={episode.image.medium} />
+                      <img src={episode.image ? episode.image.medium : null} />
                     </Grid>
                     <Grid item xs={7}>
                       <p></p>
@@ -72,7 +72,6 @@ const Details = () => {
                     </Grid>
                   </Grid>
                 </Paper>
-                <Divider />
               </div>
             );
           })}

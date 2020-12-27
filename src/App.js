@@ -70,13 +70,13 @@ function App() {
   }, [querySearchList]);
   return (
     <div className="App">
-      <Switch>
-        <Layout
-          history={history}
-          searchFieldData={searchFieldData}
-          querySearch={querySearch}
-          navigateTo={navigateTo}
-        >
+      <Layout
+        history={history}
+        searchFieldData={searchFieldData}
+        querySearch={querySearch}
+        navigateTo={navigateTo}
+      >
+        <Switch>
           <Route exact path="/">
             <Home shows={shows} />
           </Route>
@@ -89,8 +89,8 @@ function App() {
           <Route path="*">
             <Notfound />
           </Route>
-        </Layout>
-      </Switch>
+        </Switch>
+      </Layout>
     </div>
   );
 }

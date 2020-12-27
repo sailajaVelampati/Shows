@@ -30,6 +30,7 @@ const Layout = (props) => {
     onChange: (event, value) => {
       console.log(value.id, history, event);
       history.push(`/details/${value.id}`);
+      window.location.reload(false);
       //navigateTo(value.id);
     },
     clearOnBlur: true,
@@ -44,15 +45,14 @@ const Layout = (props) => {
     <>
       <AppBar className={classes.AppBar} position="fixed">
         <Toolbar data-testid="toolBar">
+          {props.location.pathname !== "/" ? <ArrowBackIosIcon /> : null}
           <Typography
             onClick={() => history.push(`/`)}
             className={classes.title}
             variant="h6"
             noWrap
             data-testid="AppTitle"
-            style={{ verticalAlign: "center" }}
           >
-            {props.location.pathname !== "/" ? <ArrowBackIosIcon /> : null}{" "}
             SHOWS
           </Typography>
           <div className={classes.search} {...getRootProps()}>
