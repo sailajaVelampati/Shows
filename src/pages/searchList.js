@@ -15,9 +15,9 @@ const SearchShowsList = (props) => {
   const classes = useStyles();
   window.scrollTo(0, 0);
   return (
-    <div className={classes.root}>
+    <div>
       {searchShowsList ? (
-        <div style={{ marginTop: "10vh" }}>
+        <div className={classes.rootDetails}>
           {searchShowsList.map((element, index) => {
             return (
               <div key={index}>
@@ -44,7 +44,6 @@ const SearchShowsList = (props) => {
                     </Grid>
                   </Grid>
                 </Paper>
-                <Divider />
               </div>
             );
           })}

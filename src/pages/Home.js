@@ -23,7 +23,7 @@ export default function Home(props) {
     history.push(`/details/${data.id}`);
   };
   return (
-    <div className={classes.root} style={{ marginTop: "10vh" }}>
+    <div className={classes.root}>
       {shows ? (
         <div>
           <FullWidthCarousel

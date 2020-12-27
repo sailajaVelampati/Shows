@@ -7,8 +7,12 @@ import Notfound from "./pages/NotFound";
 import fetchData from "./components/API";
 import SearchShowsList from "./pages/searchList";
 import { CodeSharp } from "@material-ui/icons";
+import { fade, makeStyles } from "@material-ui/core/styles";
+import HomeStyle from "./pages/HomeStyle";
+const useStyles = makeStyles((theme) => HomeStyle(theme, fade));
 
 function App() {
+  const classes = useStyles();
   const history = useHistory();
   const [shows, setShows] = useState(null);
   const [searchFieldData, setSearchFieldData] = useState(null);
@@ -69,7 +73,7 @@ function App() {
     }
   }, [querySearchList]);
   return (
-    <div className="App">
+    <div className={classes.root}>
       <Layout
         history={history}
         searchFieldData={searchFieldData}

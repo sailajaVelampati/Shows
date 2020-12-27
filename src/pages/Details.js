@@ -22,9 +22,9 @@ const Details = () => {
   }, []);
 
   return (
-    <div className={classes.root} style={{ padding: "0px 24px" }}>
+    <div className={classes.rootDetails}>
       {showDetails ? (
-        <div style={{ marginTop: "10vh" }}>
+        <div>
           <Grid container spacing={3}>
             <Grid item xs={4}>
               <img src={showDetails.image.medium} />

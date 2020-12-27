@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { fade, makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -9,41 +9,16 @@ import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import SkipNextIcon from "@material-ui/icons/SkipNext";
 import { Paper, Grid } from "@material-ui/core";
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    background: "linear-gradient(to right bottom, #7BA6CE, #545F69)",
-  },
-  details: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  content: {
-    flex: "1 0 auto",
-    padding: "0px 20px",
-  },
-  cover: {
-    width: 151,
-  },
-  controls: {
-    display: "flex",
-    alignItems: "center",
-    paddingLeft: theme.spacing(1),
-    paddingBottom: theme.spacing(1),
-  },
-  playIcon: {
-    height: 38,
-    width: 38,
-  },
-}));
+import HomeStyle from "../pages/HomeStyle";
+
+const useStyles = makeStyles((theme) => HomeStyle(theme, fade));
 
 export default function ShowCard(props) {
   const { data } = props;
   const classes = useStyles();
-  const theme = useTheme();
   return (
-    <Card className={classes.root}>
-      <div className={classes.details}>
+    <Card className={classes.rootShowCard}>
+      <div className={classes.detailsShowCard}>
         <Grid container spacing={0}>
           <Grid item sm={2}>
             <img
@@ -57,7 +32,7 @@ export default function ShowCard(props) {
             />
           </Grid>
           <Grid item sm={10}>
-            <CardContent className={classes.content}>
+            <CardContent className={classes.contentShowCard}>
               <Typography component="h5" variant="h5">
                 {data.name}
               </Typography>
@@ -74,11 +49,6 @@ export default function ShowCard(props) {
             </CardContent>
           </Grid>
         </Grid>
-        {/* <CardMedia
-          className={classes.cover}
-          src="http://static.tvmaze.com/uploads/images/medium_portrait/59/148162.jpg"
-          title="Live from space album cover"
-        /> */}
       </div>
     </Card>
   );

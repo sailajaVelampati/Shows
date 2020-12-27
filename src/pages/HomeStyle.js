@@ -3,6 +3,7 @@ const HomeStyle = (theme, fade) => ({
     flexGrow: 1,
     backgroundColor: "#273746",
     color: "#F8F9F9",
+    marginTop: "10vh",
   },
   AppBar: {
     background: "linear-gradient(to right bottom, #34495E, #1C2833)",
@@ -93,6 +94,33 @@ const HomeStyle = (theme, fade) => ({
     "& li": {
       padding: "10px",
     },
+  },
+  rootDetails: {
+    flexGrow: 1,
+    backgroundColor: "#273746",
+    color: "#F8F9F9",
+    padding: "15vh 24px",
+  },
+  rootNotFound: {
+    flexGrow: 1,
+    backgroundColor: "#273746",
+    color: "#F8F9F9",
+    padding: "15vh 24px",
+    textAlign: "center",
+    height: "100vh",
+  },
+
+  rootShowCard: {
+    display: "flex",
+    background: "linear-gradient(to right bottom, #7BA6CE, #545F69)",
+  },
+  detailsShowCard: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  contentShowCard: {
+    flex: "1 0 auto",
+    padding: "0px 20px",
   },
 });
 
