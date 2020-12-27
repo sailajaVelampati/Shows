@@ -14,6 +14,7 @@ const Details = () => {
   const classes = useStyles();
   const [showDetails, setShowdetails] = useState(null);
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetchData(`http://api.tvmaze.com/shows/${id}?embed=episodes`, (result) => {
       setShowdetails(result);
     });

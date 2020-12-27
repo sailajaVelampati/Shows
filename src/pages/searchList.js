@@ -13,7 +13,7 @@ const SearchShowsList = (props) => {
   const { searchShowsList } = props;
   console.log("searchList is called", searchShowsList);
   const classes = useStyles();
-
+  window.scrollTo(0, 0);
   return (
     <div className={classes.root}>
       {searchShowsList ? (
