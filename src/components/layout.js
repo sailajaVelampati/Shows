@@ -4,12 +4,12 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import HomeStyle from "../pages/HomeStyle";
-import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 import useAutocomplete from "@material-ui/lab/useAutocomplete";
+import EventSeatIcon from "@material-ui/icons/EventSeat";
 
 const useStyles = makeStyles((theme) => HomeStyle(theme, fade));
 
@@ -53,7 +53,7 @@ const Layout = (props) => {
             noWrap
             data-testid="AppTitle"
           >
-            SHOWS
+            TV <EventSeatIcon style={{ color: "red" }} /> BUZZ
           </Typography>
           <div className={classes.search} {...getRootProps()}>
             <div className={classes.searchIcon}>

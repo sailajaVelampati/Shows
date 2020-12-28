@@ -33,18 +33,18 @@ export default function ShowCard(props) {
           </Grid>
           <Grid item sm={10}>
             <CardContent className={classes.contentShowCard}>
-              <Typography component="h5" variant="h5">
-                {data.name}
+              <Typography component="h5" variant="h5" color="textSecondary">
+                <b>{data.name}</b>
               </Typography>
               <Typography variant="subtitle1" color="textSecondary">
                 {data.rating.average}
               </Typography>
               <Typography
                 variant="body1"
-                color="textSecondary"
                 dangerouslySetInnerHTML={{
                   __html: `${data.summary}`,
                 }}
+                color="textSecondary"
               ></Typography>
             </CardContent>
           </Grid>

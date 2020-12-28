@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import fetchData from "../components/API";
-import { Paper, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import HomeStyle from "./HomeStyle";
 import { fade, makeStyles } from "@material-ui/core/styles";
@@ -22,9 +22,9 @@ const Details = () => {
   }, []);
 
   return (
-    <div className={classes.rootDetails}>
+    <div>
       {showDetails ? (
-        <div>
+        <div className={classes.rootDetails}>
           <Grid container spacing={3}>
             <Grid item xs={4}>
               <img src={showDetails.image.medium} />
@@ -47,32 +47,30 @@ const Details = () => {
             </Grid>
             {}
           </Grid>
-
+          <Divider />
           {showDetails._embedded.episodes.map((episode, index) => {
             return (
               <div key={index}>
-                <Paper className={classes.root}>
-                  <Grid container spacing={3}>
-                    <Grid item xs={4}>
-                      <img src={episode.image ? episode.image.medium : null} />
-                    </Grid>
-                    <Grid item xs={7}>
-                      <p></p>
-                      <Typography variant="h6">{episode.name}</Typography>
-                      <Typography variant="caption" display="block">
-                        {`Season: ${episode.season} Episode: ${episode.number}`}
-                      </Typography>
-                      <div
-                        dangerouslySetInnerHTML={{
-                          __html: `${episode.summary}`,
-                        }}
-                      />
-                      <Typography variant="caption" display="block">
-                        Runtime: {episode.runtime}
-                      </Typography>
-                    </Grid>
+                <Grid container spacing={3}>
+                  <Grid item xs={4}>
+                    <img src={episode.image ? episode.image.medium : null} />
                   </Grid>
-                </Paper>
+                  <Grid item xs={7}>
+                    <p></p>
+                    <Typography variant="h6">{episode.name}</Typography>
+                    <Typography variant="caption" display="block">
+                      {`Season: ${episode.season} Episode: ${episode.number}`}
+                    </Typography>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: `${episode.summary}`,
+                      }}
+                    />
+                    <Typography variant="caption" display="block">
+                      Runtime: {episode.runtime}
+                    </Typography>
+                  </Grid>
+                </Grid>
               </div>
             );
           })}

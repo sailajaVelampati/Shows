@@ -99,7 +99,7 @@ const HomeStyle = (theme, fade) => ({
     flexGrow: 1,
     backgroundColor: "#273746",
     color: "#F8F9F9",
-    padding: "15vh 24px",
+    padding: "5vh 24px",
   },
   rootNotFound: {
     flexGrow: 1,

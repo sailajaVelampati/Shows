@@ -11,6 +11,7 @@ import {
 import Skeleton from "@material-ui/lab/Skeleton";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 const useStyles = makeStyles((theme) => HomeStyle(theme, fade));
 
 export default function Home(props) {
@@ -47,7 +48,7 @@ export default function Home(props) {
             return (
               <div key={index}>
                 <Typography variant="subtitle1">
-                  {show.genre} Features
+                  <b>{show.genre} Features</b>
                 </Typography>
                 <MultiElementCarousel
                   data={show.entries}

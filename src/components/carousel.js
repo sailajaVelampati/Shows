@@ -70,6 +70,7 @@ const MultiElementCarousel = (props) => {
 
 const FullWidthCarousel = (props) => {
   const { data, navigateTo } = props;
+  console.log(data);
   return (
     <Carousel
       additionalTransfrom={0}
