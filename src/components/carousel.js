@@ -60,7 +60,7 @@ const MultiElementCarousel = (props) => {
             key={index}
             data-testid={`show-${show.id}`}
           >
-            <img src={show.image.medium} />
+            <img src={show.image.medium} alt={show.name} />
           </div>
         );
       })}
@@ -70,7 +70,15 @@ const MultiElementCarousel = (props) => {
 
 const FullWidthCarousel = (props) => {
   const { data, navigateTo } = props;
-  console.log(data);
+  //removing duplicate entiries og the show
+  const fullCarouseldata = data
+    .map((show) => {
+      return show.entries[0];
+    })
+    .filter(
+      (thing, index, self) => index === self.findIndex((t) => t.id === thing.id)
+    );
+  console.log(fullCarouseldata);
   return (
     <Carousel
       additionalTransfrom={0}
@@ -109,23 +117,18 @@ const FullWidthCarousel = (props) => {
           items: 1,
         },
       }}
-      showDots
+      showDots={false}
       sliderClass=""
       slidesToSlide={1}
       swipeable
     >
-      {data
-        // .filter(
-        //   (thing, index, self) =>
-        //     index === self.findIndex((t) => t.id === thing.id)
-        // )
-        .map((show, index) => {
-          return (
-            <div onClick={() => navigateTo(show.entries[0])} key={index}>
-              <ShowCard data={show.entries[0]} />
-            </div>
-          );
-        })}
+      {fullCarouseldata.map((show, index) => {
+        return (
+          <div onClick={() => navigateTo(show)} key={index}>
+            <ShowCard data={show} />
+          </div>
+        );
+      })}
     </Carousel>
   );
 };

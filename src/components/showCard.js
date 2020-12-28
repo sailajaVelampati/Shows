@@ -2,13 +2,8 @@ import React from "react";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import SkipNextIcon from "@material-ui/icons/SkipNext";
-import { Paper, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import HomeStyle from "../pages/HomeStyle";
 
 const useStyles = makeStyles((theme) => HomeStyle(theme, fade));
@@ -23,12 +18,8 @@ export default function ShowCard(props) {
           <Grid item sm={2}>
             <img
               src={data.image.medium}
-              style={{
-                display: "block",
-                height: "100%",
-                weight: "100%",
-              }}
               alt={data.name}
+              className={classes.showImage}
             />
           </Grid>
           <Grid item sm={10}>

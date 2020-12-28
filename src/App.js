@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, useHistory, withRouter } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import Layout from "./components/layout";
 import Home from "./pages/Home";
 import Details from "./pages/Details";
 import Notfound from "./pages/NotFound";
 import fetchData from "./components/API";
 import SearchShowsList from "./pages/searchList";
-import { CodeSharp } from "@material-ui/icons";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import HomeStyle from "./pages/HomeStyle";
 const useStyles = makeStyles((theme) => HomeStyle(theme, fade));
@@ -58,27 +57,23 @@ function App() {
     setSearchFieldData(data);
   };
   const querySearch = (text) => {
-    console.log("query search function called with ", text);
     fetchData(`http://api.tvmaze.com/search/shows?q=${text}`, (result) => {
       setQuerySearchList(result);
     });
   };
-  const navigateTo = (id) => {
-    history.push(`/details/${id}`);
-  };
+
   useEffect(() => {
     if (querySearchList) {
-      console.log("quesrlist updated");
       history.push("/showList");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [querySearchList]);
   return (
-    <div className={classes.root}>
+    <div data-testid="applicationRoot" className={classes.root}>
       <Layout
         history={history}
         searchFieldData={searchFieldData}
         querySearch={querySearch}
-        navigateTo={navigateTo}
       >
         <Switch>
           <Route exact path="/">
@@ -99,4 +94,4 @@ function App() {
   );
 }
 
-export default withRouter(App);
+export default App;

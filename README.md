@@ -17,7 +17,8 @@ React JS
 ### pre-reqisites
 
 ```
-NodeJs - 14.15.0
+- NodeJs - 14.15.0
+- Java
 ```
 
 ### Main Stack
@@ -26,7 +27,7 @@ NodeJs - 14.15.0
 - HTML5
 - CSS
 - ECMAScript 6 (ES6)
--Javascript
+- Javascript
 - Jest
 - Material UI
 - react-multi-carousel
@@ -56,7 +57,7 @@ npm install
 ### Compiles and hot-reloads for development
 
 ```
-npm run serve
+npm start
 ```
 
 ### Compiles and minifies for production

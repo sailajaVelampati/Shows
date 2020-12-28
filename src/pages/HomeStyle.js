@@ -122,6 +122,11 @@ const HomeStyle = (theme, fade) => ({
     flex: "1 0 auto",
     padding: "0px 20px",
   },
+  showImage: {
+    display: "block",
+    height: "100%",
+    weight: "100%",
+  },
 });
 
 export default HomeStyle;

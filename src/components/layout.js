@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => HomeStyle(theme, fade));
 const Layout = (props) => {
   const classes = useStyles();
 
-  const { searchFieldData, querySearch, navigateTo, history } = props;
+  const { searchFieldData, querySearch, history } = props;
   const {
     getRootProps,
     getInputProps,
@@ -28,14 +28,10 @@ const Layout = (props) => {
     options: searchFieldData,
     getOptionLabel: (option) => option.title,
     onChange: (event, value) => {
-      console.log(value.id, history, event);
       history.push(`/details/${value.id}`);
-      window.location.reload(false);
-      //navigateTo(value.id);
     },
     clearOnBlur: true,
     onClose: (event, reason) => {
-      console.log("onClose");
       if (reason === "blur") {
         querySearch(event.target.value);
       }
@@ -43,7 +39,11 @@ const Layout = (props) => {
   });
   return (
     <>
-      <AppBar className={classes.AppBar} position="fixed">
+      <AppBar
+        data-testid="layoutApplicationBar"
+        className={classes.AppBar}
+        position="fixed"
+      >
         <Toolbar data-testid="toolBar">
           {props.location.pathname !== "/" ? <ArrowBackIosIcon /> : null}
           <Typography
@@ -60,6 +60,7 @@ const Layout = (props) => {
               <SearchIcon />
             </div>
             <InputBase
+              data-testid="searchInput"
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
@@ -69,7 +70,11 @@ const Layout = (props) => {
               {...getInputProps()}
             />
             {groupedOptions.length > 0 ? (
-              <ul className={classes.listbox} {...getListboxProps()}>
+              <ul
+                className={classes.listbox}
+                {...getListboxProps()}
+                data-testid="searchInputList"
+              >
                 {groupedOptions.map((option, index) => (
                   <li {...getOptionProps({ option, index })}>{option.title}</li>
                 ))}

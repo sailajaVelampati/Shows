@@ -27,7 +27,7 @@ const Details = () => {
         <div className={classes.rootDetails}>
           <Grid container spacing={3}>
             <Grid item xs={4}>
-              <img src={showDetails.image.medium} />
+              <img src={showDetails.image.medium} alt={showDetails.name} />
             </Grid>
             <Grid item xs={8}>
               <Typography variant="h6" noWrap>
@@ -48,12 +48,18 @@ const Details = () => {
             {}
           </Grid>
           <Divider />
+
+          <Typography variant="h6">Episodes</Typography>
+
           {showDetails._embedded.episodes.map((episode, index) => {
             return (
               <div key={index}>
-                <Grid container spacing={3}>
+                <Grid container>
                   <Grid item xs={4}>
-                    <img src={episode.image ? episode.image.medium : null} />
+                    <img
+                      src={episode.image ? episode.image.medium : null}
+                      alt={episode.name}
+                    />
                   </Grid>
                   <Grid item xs={7}>
                     <p></p>

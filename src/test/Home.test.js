@@ -33,22 +33,18 @@ describe("Home ", () => {
     });
     expect(container).toBeDefined();
 
-    const mockHistoryPush = jest.fn();
+    // const mockHistoryPush = jest.fn();
 
-    jest.mock("react-router-dom", () => ({
-      ...jest.requireActual("react-router-dom"),
-      useHistory: () => ({
-        push: mockHistoryPush,
-      }),
-    }));
-    // console.log(getByTestId("fullCarousel"));
-    console.log(document.querySelector("[data-testid=fullCarousel]"));
-    // await act(async () => {
-    //   fireEvent.click(document.querySelector("[data-testid=show-169]"));
-    //   expect(mockHistoryPush).toHaveBeenCalledWith("/");
-    // });
+    // jest.mock("react-router-dom", () => ({
+    //   ...jest.requireActual("react-router-dom"),
+    //   useHistory: () => ({
+    //     push: mockHistoryPush,
+    //   }),
+    // }));
+    // // console.log(getByTestId("fullCarousel"));
+    // console.log(document.querySelector("[data-testid=fullCarousel]"));
   });
-  test("renders Home with data", async () => {
+  xtest("renders Home with data", async () => {
     //test App is loaded
     jest.spyOn(global, "fetch").mockResolvedValue({
       json: jest.fn().mockResolvedValue(showsListMock),

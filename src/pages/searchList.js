@@ -1,19 +1,16 @@
-import React, { useState, useEffect } from "react";
-import fetchData from "../components/API";
+import React from "react";
 import { withRouter } from "react-router-dom";
 import { Paper, Grid } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import HomeStyle from "./HomeStyle";
 import { fade, makeStyles } from "@material-ui/core/styles";
-import Divider from "@material-ui/core/Divider";
 import Skeleton from "@material-ui/lab/Skeleton";
 
 const useStyles = makeStyles((theme) => HomeStyle(theme, fade));
 const SearchShowsList = (props) => {
   const { searchShowsList } = props;
-  console.log("searchList is called", searchShowsList);
   const classes = useStyles();
-  window.scrollTo(0, 0);
+  //window.scrollTo(0, 0);
   return (
     <div>
       {searchShowsList ? (
@@ -25,6 +22,7 @@ const SearchShowsList = (props) => {
                   <Grid container spacing={3}>
                     <Grid item xs={4}>
                       <img
+                        alt={element.name}
                         src={
                           element.show.image ? element.show.image.medium : null
                         }

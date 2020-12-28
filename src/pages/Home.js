@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Typography from "@material-ui/core/Typography";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import HomeStyle from "./HomeStyle";
-import fetchData from "../components/API";
 import { useHistory } from "react-router-dom";
 import {
   MultiElementCarousel,
@@ -11,16 +10,14 @@ import {
 import Skeleton from "@material-ui/lab/Skeleton";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
-import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 const useStyles = makeStyles((theme) => HomeStyle(theme, fade));
 
 export default function Home(props) {
   const classes = useStyles();
   const history = useHistory();
   const { shows } = props;
-  window.scrollTo(0, 0);
+  //window.scrollTo(0, 0);
   const navigateTo = (data) => {
-    console.log(history);
     history.push(`/details/${data.id}`);
   };
   return (

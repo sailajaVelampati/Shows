@@ -3,7 +3,7 @@ import { render, act, fireEvent } from "@testing-library/react";
 import App from "../App";
 import ReactDOM from "react-dom";
 import showsListMock from "./testConstants/showsList.mock";
-import { Route, MemoryRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route, MemoryRouter } from "react-router-dom";
 
 const mockHistoryPush = jest.fn();
 
@@ -29,18 +29,7 @@ describe("Application ", () => {
     container = null;
     global.fetch.mockRestore();
   });
-  test("renders App", async () => {
-    //test App is loaded
-    jest.spyOn(global, "fetch").mockResolvedValue({
-      json: jest.fn().mockResolvedValue(showsListMock),
-    });
-    await act(async () => {
-      render(<App />, container);
-    });
-
-    expect(container).toBeDefined();
-  });
-  test("Should navigate to Home when clicked on tool bar", async () => {
+  test("Should render App when loaded", async () => {
     //test App is loaded
     jest.spyOn(global, "fetch").mockResolvedValue({
       json: jest.fn().mockResolvedValue(showsListMock),
@@ -53,10 +42,46 @@ describe("Application ", () => {
         container
       );
     });
-
-    await act(async () => {
-      fireEvent.click(document.querySelector("[data-testid=toolBar]"));
-      expect(mockHistoryPush).toHaveBeenCalledWith("/");
-    });
+    const applicationRoot = document.querySelector(
+      "[data-testid=applicationRoot]"
+    );
+    expect(container).toBeDefined();
+    expect(applicationRoot).toBeDefined();
   });
+  test("Should log error when Service is rejected", async () => {
+    const error = new Error("Async error");
+    jest.spyOn(global, "fetch").mockResolvedValue({
+      json: jest.fn().mockRejectedValueOnce(error),
+    });
+    console.log = jest.fn();
+    await act(async () => {
+      render(
+        <MemoryRouter>
+          <App />
+        </MemoryRouter>,
+        container
+      );
+    });
+    expect(console.log).toHaveBeenCalledWith(error);
+    global.fetch.mockRestore();
+  });
+  // xtest("Should navigate to Home when clicked on tool bar", async () => {
+  //   //test App is loaded
+  //   jest.spyOn(global, "fetch").mockResolvedValue({
+  //     json: jest.fn().mockResolvedValue(showsListMock),
+  //   });
+  //   await act(async () => {
+  //     render(
+  //       <MemoryRouter>
+  //         <App />
+  //       </MemoryRouter>,
+  //       container
+  //     );
+  //   });
+
+  //   await act(async () => {
+  //     fireEvent.click(document.querySelector("[data-testid=toolBar]"));
+  //     expect(mockHistoryPush).toHaveBeenCalledWith("/");
+  //   });
+  // });
 });
