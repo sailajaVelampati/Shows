@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => HomeStyle(theme, fade));
 const SearchShowsList = (props) => {
   const { searchShowsList } = props;
   const classes = useStyles();
-  //window.scrollTo(0, 0);
+  window.scrollTo(0, 0);
   return (
     <div>
       {searchShowsList ? (

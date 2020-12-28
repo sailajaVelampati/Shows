@@ -83,3 +83,15 @@ npm test
 ```
 npm test -- --coverage --watchAll
 ```
+
+### Things I am still working on
+
+With the give time and vacation on place I could bring unit testing line ocverage to 87 % there are few functional test case and user event drive test cases to be covered.
+
+I have used material UI for the basic css components. The text for the Mobile and tablel us yet to be worked on.
+
+###
+
+I have set up CI eneviroment using travis.
+
+I have run sonarQube localy. I has passed with A rating in all fields.

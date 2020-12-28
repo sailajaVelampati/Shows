@@ -16,7 +16,7 @@ export default function Home(props) {
   const classes = useStyles();
   const history = useHistory();
   const { shows } = props;
-  //window.scrollTo(0, 0);
+  window.scrollTo(0, 0);
   const navigateTo = (data) => {
     history.push(`/details/${data.id}`);
   };
