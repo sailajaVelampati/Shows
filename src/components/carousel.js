@@ -78,7 +78,6 @@ const FullWidthCarousel = (props) => {
     .filter(
       (thing, index, self) => index === self.findIndex((t) => t.id === thing.id)
     );
-  console.log(fullCarouseldata);
   return (
     <Carousel
       additionalTransfrom={0}

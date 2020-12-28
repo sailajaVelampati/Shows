@@ -4,3 +4,4 @@
 // learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom";
 global.fetch = jest.fn();
+global.scrollTo = jest.fn();

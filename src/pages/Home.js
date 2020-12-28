@@ -21,7 +21,7 @@ export default function Home(props) {
     history.push(`/details/${data.id}`);
   };
   return (
-    <div className={classes.root}>
+    <div data-testid="homeRoot" className={classes.root}>
       {shows ? (
         <div>
           <FullWidthCarousel

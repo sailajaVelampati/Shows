@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, useHistory } from "react-router-dom";
 import { Paper, Grid } from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import HomeStyle from "./HomeStyle";
@@ -9,6 +9,7 @@ import Skeleton from "@material-ui/lab/Skeleton";
 const useStyles = makeStyles((theme) => HomeStyle(theme, fade));
 const SearchShowsList = (props) => {
   const { searchShowsList } = props;
+  const history = useHistory();
   const classes = useStyles();
   window.scrollTo(0, 0);
   return (
@@ -16,8 +17,12 @@ const SearchShowsList = (props) => {
       {searchShowsList ? (
         <div className={classes.rootDetails}>
           {searchShowsList.map((element, index) => {
+            console.log(element);
             return (
-              <div key={index}>
+              <div
+                key={index}
+                onClick={() => history.push(`/details/${element.show.id}`)}
+              >
                 <Paper className={classes.root}>
                   <Grid container spacing={3}>
                     <Grid item xs={4}>

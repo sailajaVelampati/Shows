@@ -28,12 +28,10 @@ const Layout = (props) => {
     options: searchFieldData,
     getOptionLabel: (option) => option.title,
     onChange: (event, value) => {
-      console.log("onchange called", value);
       history.push(`/details/${value.id}`);
     },
     clearOnBlur: true,
     onClose: (event, reason) => {
-      console.log("onClose called", reason);
       if (reason === "blur") {
         querySearch(event.target.value);
       }
@@ -47,7 +45,12 @@ const Layout = (props) => {
         position="fixed"
       >
         <Toolbar data-testid="toolBar">
-          {props.location.pathname !== "/" ? <ArrowBackIosIcon /> : null}
+          {props.location.pathname !== "/" ? (
+            <ArrowBackIosIcon
+              data-testid="arrowBack"
+              onClick={() => history.push(`/`)}
+            />
+          ) : null}
           <Typography
             onClick={() => history.push(`/`)}
             className={classes.title}
@@ -57,7 +60,11 @@ const Layout = (props) => {
           >
             TV <EventSeatIcon style={{ color: "red" }} /> BUZZ
           </Typography>
-          <div className={classes.search} {...getRootProps()}>
+          <div
+            className={classes.search}
+            {...getRootProps()}
+            data-testid="searchInputParent"
+          >
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
