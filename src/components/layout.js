@@ -28,10 +28,12 @@ const Layout = (props) => {
     options: searchFieldData,
     getOptionLabel: (option) => option.title,
     onChange: (event, value) => {
+      console.log("onchange called", value);
       history.push(`/details/${value.id}`);
     },
     clearOnBlur: true,
     onClose: (event, reason) => {
+      console.log("onClose called", reason);
       if (reason === "blur") {
         querySearch(event.target.value);
       }

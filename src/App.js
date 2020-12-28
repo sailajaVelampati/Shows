@@ -79,9 +79,12 @@ function App() {
           <Route exact path="/">
             <Home shows={shows} />
           </Route>
-          <Route path="/details/:id(\d+)">
-            <Details />
-          </Route>
+          <Route
+            path="/details/:id(\d+)"
+            render={(props) => (
+              <Details key={props.match.params.id} {...props} />
+            )}
+          ></Route>
           <Route path="/showList">
             <SearchShowsList searchShowsList={querySearchList} />
           </Route>
