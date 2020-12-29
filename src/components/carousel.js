@@ -123,7 +123,11 @@ const FullWidthCarousel = (props) => {
     >
       {fullCarouseldata.map((show, index) => {
         return (
-          <div onClick={() => navigateTo(show)} key={index}>
+          <div
+            data-testid={`fullCarouselShow-${show.id}`}
+            onClick={() => navigateTo(show)}
+            key={index}
+          >
             <ShowCard data={show} />
           </div>
         );

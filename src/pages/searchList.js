@@ -17,7 +17,6 @@ const SearchShowsList = (props) => {
       {searchShowsList ? (
         <div className={classes.rootDetails}>
           {searchShowsList.map((element, index) => {
-            console.log(element);
             return (
               <div
                 key={index}

@@ -102,6 +102,32 @@ describe("Layout ", () => {
     });
     //expect(mockHistoryPush).toHaveBeenCalledWith("/");
   });
+  test("Should call route with '/' when clicked on arrow icon ", async () => {
+    await act(async () => {
+      render(
+        <MemoryRouter initialEntries={["details/1"]}>
+          <Route history={historyMock} path="details/:id">
+            <Layout
+              searchFieldData={searchFieldData}
+              querySearch={querySearch}
+            />
+          </Route>
+        </MemoryRouter>,
+        container
+      );
+    });
+    expect(container).toBeDefined();
+
+    expect(document.querySelector("[data-testid=arrowBack]")).toBeDefined();
+
+    await act(async () => {
+      //fireEvent.click(document.querySelector("[data-testid=arrowBack]"));
+      TestUtils.Simulate.click(
+        document.querySelector("[data-testid=arrowBack]")
+      );
+    });
+    //expect(mockHistoryPush).toHaveBeenCalledWith("/");
+  });
   test("Should render list of show name when clicked on search field ", async () => {
     await act(async () => {
       render(
@@ -122,11 +148,7 @@ describe("Layout ", () => {
       fireEvent.click(
         document.querySelector("[data-testid=searchInputParent]")
       );
-      // TestUtils.Simulate.click(
-      //        document.querySelector("[data-testid=searchInput]")
-      //     );
     });
-    console.log(document.querySelector("[data-testid=searchInputList]"));
     expect(
       document.querySelector("[data-testid=searchInputList]")
     ).toBeDefined();
