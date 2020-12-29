@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/sailajaVelampati/Shows.svg?branch=master)](https://travis-ci.org/github/sailajaVelampati/Shows)
 
-# tv-shows-app
+# TV-Buzz
 
 ### Project Description
 
@@ -64,12 +64,6 @@ npm start
 
 ```
 npm run build
-```
-
-### Lints and fixes files
-
-```
-npm run lint
 ```
 
 ### Unit test
